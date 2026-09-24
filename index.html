@@ -1,0 +1,2364 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="description" content="Юлия Чуйкина: AI-креатор. Реклама, фото и видео для брендов и малого бизнеса."><style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}[hidden]{display:none!important}</style></head><body>
+<title>Юлия Чуйкина</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&display=swap">
+<style>
+:root{
+  --bg:#FFF5F3; --bg2:#FBE6E5; --bg3:#F7D6DB;
+  --surface:#FFFFFF; --glass:rgba(255,255,255,.72);
+  --ink:#3A2A2F; --muted:#86696F;
+  --accent:#C7526E; --accent-ink:#FFFFFF; --accent-soft:#F8D7DD;
+  --line:#F0D5D6; --bar:rgba(255,245,243,.84);
+  --shadow:0 14px 36px rgba(199,82,110,.11);
+  --blob1:#F8BAC4; --blob2:#FBD5C5;
+  --font:'Manrope',system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+  --gutter:clamp(16px,4vw,40px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#1F1618; --bg2:#2A1D20; --bg3:#3A262B;
+    --surface:#2F2124; --glass:rgba(47,33,36,.72);
+    --ink:#FBEDEE; --muted:#C9A9AF;
+    --accent:#F08FA5; --accent-ink:#2B1015; --accent-soft:#4A2E35;
+    --line:#48333A; --bar:rgba(31,22,24,.84);
+    --shadow:0 14px 36px rgba(0,0,0,.35);
+    --blob1:#7A3646; --blob2:#6B4438;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#1F1618; --bg2:#2A1D20; --bg3:#3A262B;
+  --surface:#2F2124; --glass:rgba(47,33,36,.72);
+  --ink:#FBEDEE; --muted:#C9A9AF;
+  --accent:#F08FA5; --accent-ink:#2B1015; --accent-soft:#4A2E35;
+  --line:#48333A; --bar:rgba(31,22,24,.84);
+  --shadow:0 14px 36px rgba(0,0,0,.35);
+  --blob1:#7A3646; --blob2:#6B4438;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body.lock{overflow:hidden}
+img,video{max-width:100%;display:block}
+a{color:inherit}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:8px}
+.wrap{width:100%;max-width:1200px;margin-inline:auto;padding-inline:var(--gutter)}
+section{padding-block:clamp(56px,8vw,104px)}
+.eyebrow{font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin:0 0 14px}
+h1,h2,h3{font-weight:500;letter-spacing:-.025em;line-height:1.08;margin:0;text-wrap:balance}
+h2{font-size:clamp(30px,4.4vw,52px)}
+.lead{color:var(--muted);max-width:60ch;margin:0}
+.rv{transform:translateY(16px);transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.rv.in{transform:none}
+
+/* header */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:var(--bar);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid transparent;transition:border-color .3s}
+.bar.scrolled{border-bottom-color:var(--line)}
+.bar .wrap{display:flex;align-items:center;gap:20px;height:68px}
+.logo{font-weight:700;font-size:20px;letter-spacing:-.02em;text-decoration:none;margin-right:auto}
+.logo i{color:var(--accent);font-style:normal}
+.nav{display:flex;gap:28px;font-size:14px;font-weight:500}
+.nav a{text-decoration:none;color:var(--muted);transition:color .2s}
+.nav a:hover{color:var(--ink)}
+.lang{display:flex;background:var(--bg2);border-radius:999px;padding:3px;font-size:12px;font-weight:600}
+.lang button{border:0;background:transparent;padding:6px 11px;border-radius:999px;color:var(--muted);letter-spacing:.04em}
+.lang button[aria-pressed="true"]{background:var(--surface);color:var(--ink);box-shadow:0 1px 4px rgba(0,0,0,.08)}
+.btn{display:inline-flex;align-items:center;gap:10px;border-radius:999px;padding:14px 24px;font-size:15px;font-weight:600;text-decoration:none;border:1px solid transparent;transition:transform .25s,box-shadow .25s,background .25s;white-space:nowrap}
+.btn svg{width:16px;height:16px}
+.btn.pri{background:var(--accent);color:var(--accent-ink);box-shadow:0 8px 22px rgba(199,82,110,.28)}
+.btn.pri:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(199,82,110,.34)}
+.btn.sec{background:var(--surface);border-color:var(--line);color:var(--ink)}
+.btn.sec:hover{transform:translateY(-2px);border-color:var(--accent)}
+.btn.sm{padding:10px 18px;font-size:14px}
+
+/* hero */
+.hero{position:relative;overflow-x:clip;padding-block:clamp(36px,6vw,72px) clamp(28px,4vw,48px)}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(24px,5vw,64px);align-items:center}
+.hero h1{font-size:clamp(46px,7.4vw,92px);font-weight:400;letter-spacing:-.035em;line-height:1}
+.hero h1 b{display:block;font-weight:500;color:var(--accent)}
+.hero .role{font-size:clamp(17px,1.6vw,20px);font-weight:600;margin:26px 0 8px;max-width:30ch}
+.hero p.sub{color:var(--muted);margin:0 0 30px;max-width:46ch}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px}
+.portrait{position:relative;width:100%;max-width:470px;aspect-ratio:1;margin-inline:auto}
+.blob{position:absolute;inset:-14%;border-radius:50%;background:radial-gradient(circle at 65% 40%,var(--blob1),transparent 62%),radial-gradient(circle at 25% 75%,var(--blob2),transparent 60%);filter:blur(26px);opacity:.9;will-change:transform}
+.portrait .ph{position:absolute;inset:0;border-radius:50%;overflow:hidden;box-shadow:0 24px 60px rgba(199,82,110,.22);background:var(--bg2)}
+.portrait .ph img{width:100%;height:100%;object-fit:cover}
+.avail{position:absolute;right:-6%;bottom:-4%;width:min(62%,290px);background:var(--glass);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.55);border-radius:22px;padding:16px 18px;box-shadow:var(--shadow)}
+.avail .st{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:600;color:var(--accent)}
+.avail .st::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px var(--accent-soft)}
+.avail p{margin:8px 0 12px;font-size:14px;line-height:1.45}
+.avail a{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:13px;font-weight:600;text-decoration:none;border-top:1px solid var(--line);padding-top:12px}
+.circ{display:inline-grid;place-items:center;width:32px;height:32px;border-radius:50%;border:1px solid var(--line);background:var(--surface);flex:none;transition:background .25s,color .25s,border-color .25s}
+.circ svg{width:14px;height:14px}
+a:hover>.circ,.card:hover .circ{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+
+/* tools marquee */
+.tools{padding-block:0}
+.tools .row{display:flex;align-items:center;gap:22px;border-block:1px solid var(--line);padding-block:20px}
+.tools .lab{font-size:13px;color:var(--muted);flex:none;font-weight:500}
+.marq{overflow:hidden;flex:1;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.track{display:flex;gap:34px;width:max-content;animation:mq 60s linear infinite}
+.track span{font-size:17px;font-weight:600;letter-spacing:-.01em;color:var(--muted);white-space:nowrap}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* stats */
+.stats{padding-block:clamp(36px,5vw,56px) 0}
+.statbox{display:grid;grid-template-columns:repeat(4,1fr);background:var(--surface);border:1px solid var(--line);border-radius:26px;box-shadow:var(--shadow)}
+.stat{padding:26px 24px;text-align:center;border-right:1px solid var(--line)}
+.stat:last-child{border-right:0}
+.stat b{display:block;font-size:clamp(34px,4vw,48px);font-weight:500;letter-spacing:-.03em;line-height:1;color:var(--accent);font-variant-numeric:tabular-nums}
+.stat span{display:block;margin-top:10px;font-size:13px;color:var(--muted);line-height:1.4}
+
+/* headings row */
+.head{display:flex;flex-wrap:wrap;gap:20px;align-items:flex-end;justify-content:space-between;margin-bottom:clamp(28px,4vw,44px)}
+.head .lead{margin-top:14px}
+
+/* cards */
+.feat{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+.card{position:relative;margin:0;background:var(--surface);border:1px solid var(--line);border-radius:24px;overflow:hidden;box-shadow:var(--shadow);cursor:pointer;transition:transform .4s cubic-bezier(.2,.7,.2,1),box-shadow .4s}
+.card:hover{transform:translateY(-4px);box-shadow:0 22px 46px rgba(199,82,110,.18)}
+.cover{position:relative;background:var(--bg2);overflow:hidden;margin:8px 8px 0;border-radius:18px}
+.feat .cover{aspect-ratio:5/4}
+.cover img,.cover video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 28%;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.card:hover .cover img{transform:scale(1.04)}
+.cover video{opacity:0;transition:opacity .35s}
+.cover.on video{opacity:1}
+.tag{position:absolute;top:12px;right:12px;background:var(--glass);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-radius:999px;padding:5px 12px;font-size:12px;font-weight:600;color:var(--ink);z-index:2}
+.pl{position:absolute;left:12px;bottom:12px;z-index:2;display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--glass);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.pl svg{width:12px;height:12px;margin-left:2px}
+.cinfo{display:flex;gap:14px;align-items:flex-start;justify-content:space-between;padding:16px 18px 4px}
+.cinfo h3{font-size:18px;font-weight:600;letter-spacing:-.015em;line-height:1.25}
+.cinfo p{margin:4px 0 0;font-size:14px;color:var(--muted)}
+.bdg{display:flex;flex-wrap:wrap;gap:6px;padding:8px 18px 18px}
+.b{display:inline-block;border-radius:999px;padding:4px 11px;font-size:12px;font-weight:600;border:1px solid var(--line);color:var(--muted);background:transparent}
+.b.real{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.b.concept{background:var(--accent-soft);border-color:transparent;color:var(--accent)}
+.b.mini{background:var(--bg2);border-color:transparent}
+
+/* filters + grid */
+.legend{display:flex;flex-wrap:wrap;gap:8px 18px;margin:0 0 26px;font-size:13.5px;color:var(--muted)}
+.legend span{display:flex;gap:8px;align-items:center}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:30px}
+.chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:9px 18px;font-size:14px;font-weight:500;transition:background .2s,color .2s,border-color .2s}
+.chip:hover{border-color:var(--accent)}
+.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.grid{display:flex;gap:22px;align-items:flex-start}
+.gcol{flex:1 1 0;min-width:0;display:flex;flex-direction:column;gap:22px}
+.workbg{background:linear-gradient(180deg,var(--bg),var(--bg2) 14%,var(--bg2) 86%,var(--bg))}
+
+/* about */
+.about{overflow-x:clip}
+.about .wrap{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(28px,6vw,80px);align-items:center}
+.aph{position:relative;max-width:440px;margin-inline:auto;width:100%}
+.aph .fr{border-radius:200px 200px 28px 28px;overflow:hidden;background:var(--bg2);box-shadow:var(--shadow);aspect-ratio:4/5}
+.aph .fr img{width:100%;height:100%;object-fit:cover;object-position:50% 12%}
+.vc{position:absolute;right:-14%;bottom:-8%;width:34%;border-radius:20px;overflow:hidden;border:4px solid var(--surface);box-shadow:var(--shadow);background:#000;aspect-ratio:9/16;cursor:pointer}
+.vc video{width:100%;height:100%;object-fit:cover}
+.vc .pl{left:50%;bottom:auto;top:50%;transform:translate(-50%,-50%);width:44px;height:44px}
+.vc.play .pl{display:none}
+.vcap{position:absolute;right:-14%;bottom:-16%;width:34%;font-size:11.5px;color:var(--muted);text-align:center}
+.about p{margin:18px 0 0;color:var(--muted);max-width:56ch}
+.about h2{margin-bottom:6px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.chips span{background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:13px;font-weight:500}
+
+/* services */
+.svc{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.sv{border-radius:26px;padding:26px 22px 22px;display:flex;flex-direction:column;gap:12px;min-height:270px;background:var(--t,var(--bg2))}
+.sv:last-child:nth-child(4n+3){grid-column:span 2}
+.sv:nth-child(4n+1){--t:#F9DCDD}.sv:nth-child(4n+2){--t:#FBE7E1}.sv:nth-child(4n+3){--t:#F6D3DA}.sv:nth-child(4n+4){--t:#FCEBE6}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .sv:nth-child(n){--t:#3A262B}:root:not([data-theme="light"]) .sv:nth-child(even){--t:#33222A}}
+:root[data-theme="dark"] .sv:nth-child(n){--t:#3A262B}
+:root[data-theme="dark"] .sv:nth-child(even){--t:#33222A}
+.sv .ic{width:44px;height:44px;border-radius:14px;background:var(--surface);display:grid;place-items:center;color:var(--accent)}
+.sv .ic svg{width:22px;height:22px}
+.sv h3{font-size:19px;font-weight:600;letter-spacing:-.015em}
+.sv p{margin:0;font-size:14.5px;color:var(--muted)}
+.sv .pr{margin-top:auto;font-size:13px;font-weight:600;color:var(--accent)}
+.note{margin:26px 0 0;color:var(--muted);font-size:14.5px}
+
+/* process */
+.proc{display:grid;grid-template-columns:repeat(5,1fr);gap:0;background:var(--surface);border:1px solid var(--line);border-radius:26px;box-shadow:var(--shadow);overflow:hidden}
+.step{padding:26px 22px}
+.step+.step{border-left:1px solid var(--line)}
+.step i{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--accent-soft);color:var(--accent);font-style:normal;font-weight:700;font-size:14px;margin-bottom:16px}
+.step h3{font-size:17px;font-weight:600;margin-bottom:8px}
+.step p{margin:0;font-size:14px;color:var(--muted)}
+
+/* contact */
+.cta{padding-block:0 clamp(48px,6vw,80px)}
+.ctabox{background:linear-gradient(120deg,var(--bg3),var(--bg2) 55%,var(--accent-soft));border-radius:34px;padding:clamp(28px,5vw,64px);display:grid;grid-template-columns:1.2fr .8fr;gap:32px;align-items:center;position:relative;overflow:hidden}
+.ctabox h2{font-size:clamp(30px,4.6vw,56px)}
+.ctabox h2 em{font-style:normal;color:var(--accent)}
+.ctabox p{color:var(--muted);margin:18px 0 26px;max-width:46ch}
+.links{display:grid;gap:10px}
+.lk{display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--glass);border:1px solid rgba(255,255,255,.5);border-radius:18px;padding:14px 18px;text-decoration:none;transition:transform .25s}
+.lk:hover{transform:translateX(4px)}
+.lk small{display:block;color:var(--muted);font-size:12px}
+.lk b{font-weight:600;font-size:15px;word-break:break-word}
+footer{border-top:1px solid var(--line);padding-block:26px;font-size:13px;color:var(--muted)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-between}
+
+/* modal */
+.ov{position:fixed;inset:0;z-index:60;background:rgba(48,24,30,.58);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:none;padding:max(16px,env(safe-area-inset-top,0px)) 16px max(16px,env(safe-area-inset-bottom,0px))}
+.ov.open{display:grid;place-items:center}
+.dlg{position:relative;width:min(1180px,100%);height:min(780px,100%);background:var(--bg);border-radius:28px;display:grid;grid-template-columns:minmax(0,1fr) 340px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.35)}
+.mst{position:relative;display:grid;grid-template-rows:minmax(0,1fr) auto auto;min-height:0;background:var(--bg2);padding:18px;gap:12px}
+.stage{display:grid;place-items:center;min-height:0;min-width:0}
+.stage img{width:100%;height:100%;object-fit:contain;border-radius:14px}
+.stage video{width:100%;height:100%;object-fit:contain;border-radius:14px;background:#000}
+.cap{text-align:center;font-size:13px;color:var(--muted);min-height:18px}
+.thumbs{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;scrollbar-width:thin}
+.th{position:relative;flex:none;width:58px;height:58px;border-radius:12px;overflow:hidden;border:2px solid transparent;padding:0;background:var(--bg3)}
+.th img{width:100%;height:100%;object-fit:cover}
+.th[aria-current="true"]{border-color:var(--accent)}
+.th .pl{left:50%;top:50%;bottom:auto;transform:translate(-50%,-50%);width:22px;height:22px}
+.th .pl svg{width:8px;height:8px}
+.info{padding:30px 26px 26px;overflow-y:auto;display:flex;flex-direction:column;gap:14px}
+.info h3{font-size:24px;line-height:1.15;letter-spacing:-.02em}
+.info .sub{color:var(--muted);margin:0;font-size:14.5px}
+.info p.d{margin:0;font-size:15px}
+.info dl{margin:0;display:grid;gap:6px}
+.info dt{font-size:11.5px;text-transform:uppercase;letter-spacing:.14em;font-weight:600;color:var(--accent)}
+.info dd{margin:0;font-size:14.5px}
+.xl{display:grid;gap:8px;margin-top:4px}
+.x{position:absolute;top:14px;right:14px;z-index:5;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--surface);display:grid;place-items:center}
+.x svg{width:16px;height:16px}
+.nv{position:absolute;top:calc(50% - 40px);z-index:4;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--glass);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:grid;place-items:center;transform:translateY(-50%)}
+.nv.p{left:26px}.nv.n{right:26px}
+.nv svg{width:16px;height:16px}
+.nv[hidden]{display:none}
+
+@media (max-width:1020px){
+  .svc{grid-template-columns:repeat(2,1fr)}
+  .sv:last-child:nth-child(4n+3){grid-column:1/-1}
+  .proc{grid-template-columns:1fr}
+  .step+.step{border-left:0;border-top:1px solid var(--line)}
+  .ctabox{grid-template-columns:1fr}
+}
+@media (max-width:860px){
+  .nav{display:none}
+  .hero .wrap,.about .wrap{grid-template-columns:1fr}
+  .portrait{max-width:380px;margin-top:16px}
+  .portrait{margin-bottom:76px}
+  .avail{right:4%;bottom:-76px;width:min(90%,330px)}
+  .statbox{grid-template-columns:repeat(2,1fr)}
+  .stat:nth-child(2){border-right:0}
+  .stat:nth-child(-n+2){border-bottom:1px solid var(--line)}
+  .feat{grid-template-columns:1fr}
+  .grid,.gcol{gap:14px}
+  .card{border-radius:20px}
+  .cinfo{padding:12px 12px 2px}
+  .cinfo h3{font-size:15.5px}
+  .cinfo p{font-size:13px}
+  .bdg{padding:8px 12px 14px}
+  .circ{width:28px;height:28px}
+  .vc{right:2%;bottom:-6%}.vcap{display:none}
+  .dlg{display:block;height:100%;overflow-y:auto}
+  .mst{display:block;padding:12px 12px 8px}
+  .mst>*+*{margin-top:10px}
+  .stage{height:min(52vh,480px)}
+  .nv{top:calc(12px + min(52vh,480px)/2 - 20px)}
+  .nv.p{left:22px}.nv.n{right:22px}
+  .info{overflow:visible;padding:22px 20px 28px}
+  .x{position:fixed;top:calc(28px + env(safe-area-inset-top,0px));right:28px}
+  .tools .lab{display:none}
+}
+@media (max-width:520px){
+  .bar .wrap{gap:10px}
+  .btn.sm{padding:9px 14px;font-size:13px}
+  .svc{grid-template-columns:1fr}
+  .sv{min-height:0}
+  .hero .cta-row .btn{flex:1 1 auto;justify-content:center}
+  .filters{flex-wrap:nowrap;overflow-x:auto;margin-inline:calc(var(--gutter)*-1);padding-inline:var(--gutter);scrollbar-width:none}
+  .chip{flex:none}
+}
+@media (prefers-reduced-motion:reduce){
+  .track{animation:none}
+  .rv,.card,.cover img,.btn{transition:none}
+  html{scroll-behavior:auto}
+}
+</style>
+
+<header class="bar" id="top">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Юлия Чуйкина">Ю<i>.</i>Ч</a>
+    <nav class="nav" aria-label="Menu">
+      <a href="#work" data-k="nav_work"></a>
+      <a href="#about" data-k="nav_about"></a>
+      <a href="#services" data-k="nav_services"></a>
+      <a href="#process" data-k="nav_process"></a>
+      <a href="#contact" data-k="nav_contact"></a>
+    </nav>
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" data-l="ru" aria-pressed="true">RU</button>
+      <button type="button" data-l="en" aria-pressed="false">EN</button>
+    </div>
+    <a class="btn pri sm" href="https://t.me/juliachu93" target="_blank" rel="noopener"><span data-k="cta_short"></span></a>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <h1><span data-k="hero_hi"></span> <b data-k="hero_name"></b></h1>
+      <p class="role" data-k="hero_role"></p>
+      <p class="sub" data-k="hero_p"></p>
+      <div class="cta-row">
+        <a class="btn pri" href="#work"><span data-k="btn_work"></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn sec" href="#about"><span data-k="btn_about"></span></a>
+      </div>
+    </div>
+    <div class="portrait">
+      <div class="blob" id="blob"></div>
+      <div class="ph"><img src="a/hero.webp" alt="Юлия Чуйкина" width="900" height="900"></div>
+      <div class="avail">
+        <div class="st" data-k="avail_t"></div>
+        <p data-k="avail_p"></p>
+        <a href="https://t.me/juliachu93" target="_blank" rel="noopener"><span data-k="avail_cta"></span><span class="circ"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="tools" aria-label="Tools">
+  <div class="wrap"><div class="row"><span class="lab" data-k="tools_lab"></span><div class="marq"><div class="track" id="track"></div></div></div></div>
+</section>
+
+<section class="stats">
+  <div class="wrap"><div class="statbox" id="stats"></div></div>
+</section>
+
+<section id="featured">
+  <div class="wrap">
+    <div class="head rv">
+      <div><p class="eyebrow" data-k="feat_e"></p><h2 data-k="feat_h"></h2></div>
+      <a class="btn sec" href="#work"><span data-k="btn_all"></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+    <div class="feat" id="feat"></div>
+  </div>
+</section>
+
+<section id="work" class="workbg">
+  <div class="wrap">
+    <div class="head rv"><div><p class="eyebrow" data-k="work_e"></p><h2 data-k="work_h"></h2></div></div>
+    <div class="legend" id="legend"></div>
+    <div class="filters" id="filters" role="group"></div>
+    <div class="grid" id="grid"></div>
+  </div>
+</section>
+
+<section id="about" class="about">
+  <div class="wrap">
+    <div class="aph rv">
+      <div class="fr"><img src="a/about.webp" alt="Юлия Чуйкина" loading="lazy"></div>
+      <div class="vc" id="vc" role="button" tabindex="0" aria-label="Video"><video src="v/av3.mp4" poster="a/p_av3.webp" playsinline preload="none"></video><span class="pl"><svg viewBox="0 0 12 12" fill="currentColor"><path d="M2 1v10l9-5z"/></svg></span></div>
+    </div>
+    <div class="rv">
+      <p class="eyebrow" data-k="about_e"></p>
+      <h2 data-k="about_h"></h2>
+      <p data-k="about_p1"></p>
+      <p data-k="about_p2"></p>
+      <div class="chips" id="chips"></div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <div class="head rv"><div><p class="eyebrow" data-k="svc_e"></p><h2 data-k="svc_h"></h2></div></div>
+    <div class="svc" id="svc"></div>
+    <p class="note" data-k="svc_note"></p>
+  </div>
+</section>
+
+<section id="process" style="padding-top:0">
+  <div class="wrap">
+    <div class="head rv"><div><p class="eyebrow" data-k="proc_e"></p><h2 data-k="proc_h"></h2></div></div>
+    <div class="proc" id="proc"></div>
+  </div>
+</section>
+
+<section id="contact" class="cta">
+  <div class="wrap">
+    <div class="ctabox rv">
+      <div>
+        <p class="eyebrow" data-k="ct_e"></p>
+        <h2 data-k="ct_h"></h2>
+        <p data-k="ct_p"></p>
+        <a class="btn pri" href="https://t.me/juliachu93" target="_blank" rel="noopener"><span data-k="cta_tg"></span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+      <div class="links" id="links"></div>
+    </div>
+  </div>
+</section>
+</main>
+<footer><div class="wrap"><span>© 2026 Юлия Чуйкина</span><span data-k="foot"></span></div></footer>
+
+<div class="ov" id="ov" role="dialog" aria-modal="true" aria-labelledby="mt">
+  <div class="dlg">
+    <button class="x" id="mx" type="button" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    <div class="mst"><button class="nv p" id="mp" type="button" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 6-6 6 6 6"/></svg></button><button class="nv n" id="mn" type="button" aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></svg></button><div class="stage" id="stage"></div><div class="cap" id="cap"></div><div class="thumbs" id="thumbs"></div></div>
+    <div class="info" id="info"></div>
+  </div>
+</div>
+
+<script>
+const D=[
+{
+"id": "trailers",
+"cat": "real",
+"badge": "real",
+"featured": true,
+"ar": 1.78,
+"cover": "b/p_trailer1.webp",
+"preview": "v/trailer1.mp4",
+"tag": {
+"ru": "AI-видео",
+"en": "AI video"
+},
+"title": {
+"ru": "Трейлеры для питчинга сценариев",
+"en": "Script pitch trailers"
+},
+"sub": {
+"ru": "«Вечный бал» и «Под одним одеялом»",
+"en": "“Eternal Ball” and “Under One Blanket”"
+},
+"desc": {
+"ru": "Два трейлера по заказу авторов сценариев. За 30–40 секунд ролик передаёт настроение, героев и мир истории, чтобы сценарий было проще показать продюсерам. Кадры, оживление и озвучка сделаны нейросетями.",
+"en": "Two trailers made to order for screenwriters. In 30–40 seconds each one shows the mood, the characters and the world of the story, so the script is easier to pitch to producers. Frames, animation and voice are all AI-generated."
+},
+"tools": [
+"Nano Banana",
+"Grok",
+"ElevenLabs"
+],
+"media": [
+{
+"t": "v",
+"src": "v/trailer1.mp4",
+"poster": "b/p_trailer1.webp",
+"ar": 1.78,
+"label": {
+"ru": "«Вечный бал»",
+"en": "“Eternal Ball”"
+}
+},
+{
+"t": "v",
+"src": "v/trailer2.mp4",
+"poster": "b/p_trailer2.webp",
+"ar": 1.79,
+"label": {
+"ru": "«Под одним одеялом»",
+"en": "“Under One Blanket”"
+}
+}
+]
+},
+{
+"id": "preventera",
+"cat": "real",
+"badge": "real",
+"featured": true,
+"ar": 0.75,
+"cover": "b/pv01.webp",
+"tag": {
+"ru": "AI-фото",
+"en": "AI photo"
+},
+"title": {
+"ru": "Preventera: нейрофотосессия товара",
+"en": "Preventera: AI product shoot"
+},
+"sub": {
+"ru": "Гидрогелевые патчи под глаза",
+"en": "Under-eye hydrogel patches"
+},
+"desc": {
+"ru": "Реальный заказ бренда Preventera. Предметные кадры патчей, упаковка в руках, текстура и портреты с патчами на чистом светлом фоне, без студийной съёмки.",
+"en": "A real order for the brand Preventera. Product shots of the patches, the pack in hand, close-ups of the texture and portraits wearing the patches on a clean light background, with no studio shoot."
+},
+"tools": [],
+"media": [
+{
+"t": "i",
+"src": "b/pv01.webp"
+},
+{
+"t": "i",
+"src": "b/pv02.webp"
+},
+{
+"t": "i",
+"src": "b/pv03.webp"
+},
+{
+"t": "i",
+"src": "b/pv04.webp"
+},
+{
+"t": "i",
+"src": "b/pv05.webp"
+},
+{
+"t": "i",
+"src": "b/pv06.webp"
+},
+{
+"t": "i",
+"src": "b/pv07.webp"
+},
+{
+"t": "i",
+"src": "b/pv08.webp"
+},
+{
+"t": "i",
+"src": "b/pv09.webp"
+},
+{
+"t": "i",
+"src": "b/pv10.webp"
+},
+{
+"t": "i",
+"src": "b/pv11.webp"
+},
+{
+"t": "i",
+"src": "b/pv12.webp"
+},
+{
+"t": "i",
+"src": "b/pv13.webp"
+}
+]
+},
+{
+"id": "biohack",
+"cat": "real",
+"badge": "real",
+"ar": 0.75,
+"cover": "a/bh01.webp",
+"tag": {
+"ru": "Упаковка",
+"en": "Packaging"
+},
+"title": {
+"ru": "BioHack: упаковка протеина",
+"en": "BioHack: protein packaging"
+},
+"sub": {
+"ru": "Генерация упаковки товара",
+"en": "Product packaging generation"
+},
+"desc": {
+"ru": "Реальный заказ. Сгенерированные варианты упаковки протеина в двух цветовых решениях, показанные как готовый товар.",
+"en": "A real order. Generated protein pouch packaging in two colour options, shown as a finished product."
+},
+"tools": [],
+"media": [
+{
+"t": "i",
+"src": "a/bh01.webp"
+},
+{
+"t": "i",
+"src": "a/bh02.webp"
+}
+]
+},
+{
+"id": "syntx",
+"cat": "real",
+"badge": "real",
+"featured": false,
+"ar": 1.82,
+"cover": "b/p_syntx.webp",
+"preview": "v/syntx.mp4",
+"tag": {
+"ru": "AI-видео",
+"en": "AI video"
+},
+"title": {
+"ru": "Рекламный ролик для syntx.ai",
+"en": "Ad for syntx.ai"
+},
+"sub": {
+"ru": "Конкурсная работа по ТЗ заказчика",
+"en": "Contest entry made to the client’s brief"
+},
+"desc": {
+"ru": "Ролик для конкурса, сделанный по техническому заданию заказчика. В ТЗ были текст и идея, что продвигаем. Образы, сюжет и подачу придумала я. Озвучка сделана в ElevenLabs.",
+"en": "A contest video made to the client’s brief. The brief gave the text and what to promote. The visuals, story and delivery are mine. The voiceover was made in ElevenLabs."
+},
+"tools": [
+"Nano Banana",
+"Grok",
+"ElevenLabs"
+],
+"media": [
+{
+"t": "v",
+"src": "v/syntx.mp4",
+"poster": "b/p_syntx.webp",
+"ar": 1.82
+}
+]
+},
+{
+"id": "bisou",
+"cat": "ads",
+"badge": "concept",
+"featured": true,
+"ar": 0.75,
+"cover": "a/bi01.webp",
+"preview": "v/bisou.mp4",
+"tag": {
+"ru": "AI-видео и фото",
+"en": "AI video and photo"
+},
+"title": {
+"ru": "BISOU: рекламное видео и фото (концепт)",
+"en": "BISOU: ad video and photos (concept)"
+},
+"sub": {
+"ru": "Косметический бренд",
+"en": "Cosmetics brand"
+},
+"desc": {
+"ru": "Концепт рекламы для бренда BISOU: вертикальный ролик и серия фото крема в мягком утреннем свете. Бренд не заказывал работу, это моя инициатива.",
+"en": "An ad concept for the brand BISOU: a vertical video and a photo series of a body cream in soft morning light. The brand did not commission it, it is my own initiative."
+},
+"tools": [],
+"links": [
+{
+"l": {
+"ru": "Кейс на Behance",
+"en": "Case on Behance"
+},
+"u": "https://www.behance.net/gallery/255221753/reklamnyj-rolik-dlja-bjuti-brenda-Ai-video"
+},
+{
+"l": {
+"ru": "Пост в Instagram",
+"en": "Instagram post"
+},
+"u": "https://www.instagram.com/p/DaHLppIsMYf/"
+}
+],
+"media": [
+{
+"t": "v",
+"src": "v/bisou.mp4",
+"poster": "a/p_bisou.webp",
+"ar": 0.55
+},
+{
+"t": "i",
+"src": "a/bi01.webp"
+},
+{
+"t": "i",
+"src": "a/bi02.webp"
+},
+{
+"t": "i",
+"src": "a/bi03.webp"
+},
+{
+"t": "i",
+"src": "a/bi04.webp"
+},
+{
+"t": "i",
+"src": "a/bi05.webp"
+},
+{
+"t": "i",
+"src": "a/bi06.webp"
+},
+{
+"t": "i",
+"src": "a/bi07.webp"
+},
+{
+"t": "i",
+"src": "a/bi08.webp"
+},
+{
+"t": "i",
+"src": "a/bi09.webp"
+},
+{
+"t": "i",
+"src": "a/bi10.webp"
+},
+{
+"t": "i",
+"src": "a/bi11.webp"
+},
+{
+"t": "i",
+"src": "a/bi12.webp"
+}
+]
+},
+{
+"id": "music",
+"cat": "ads",
+"badge": "concept",
+"featured": true,
+"ar": 1.78,
+"cover": "b/p_music.webp",
+"preview": "v/music.mp4",
+"tag": {
+"ru": "Клип",
+"en": "Music video"
+},
+"title": {
+"ru": "Музыкальный ролик для трека Инстасамки (концепт)",
+"en": "Music video for an Instasamka track (concept)"
+},
+"sub": {
+"ru": "AI-персонаж по мотивам",
+"en": "AI character inspired by the artist"
+},
+"desc": {
+"ru": "Концепт-сниппет клипа: образ, сюжет и визуальные отсылки придуманы мной, в исходном задании были только трек и текст. Для героини собрана карта персонажа, чтобы она выглядела одинаково в каждом кадре.",
+"en": "A concept snippet for a music video. The look, the story and the visual references are mine. Only the track and lyrics existed at the start. The heroine has a character sheet so she looks the same in every shot."
+},
+"tools": [
+"Nano Banana",
+"Seedance 2.0"
+],
+"links": [
+{
+"l": {
+"ru": "Кейс на Behance",
+"en": "Case on Behance"
+},
+"u": "https://www.behance.net/gallery/255218677/muzykalnyj-snippet-Ai-video-Seedance-20"
+},
+{
+"l": {
+"ru": "Reel в Instagram",
+"en": "Instagram reel"
+},
+"u": "https://www.instagram.com/reel/DZcGem6MKHF/"
+}
+],
+"media": [
+{
+"t": "v",
+"src": "v/music.mp4",
+"poster": "b/p_music.webp",
+"ar": 1.78
+},
+{
+"t": "i",
+"src": "a/mu01.webp"
+},
+{
+"t": "i",
+"src": "a/mu02.webp"
+},
+{
+"t": "i",
+"src": "a/mu03.webp"
+},
+{
+"t": "i",
+"src": "a/mu04.webp"
+},
+{
+"t": "i",
+"src": "a/mu05.webp"
+},
+{
+"t": "i",
+"src": "a/mu06.webp"
+},
+{
+"t": "i",
+"src": "a/mu07.webp"
+},
+{
+"t": "i",
+"src": "a/mu08.webp"
+}
+]
+},
+{
+"id": "smorodina",
+"cat": "ads",
+"badge": "concept",
+"ar": 0.55,
+"cover": "b/sm01.webp",
+"preview": "v/smorodina.mp4",
+"tag": {
+"ru": "AI-видео и фото",
+"en": "AI video and photo"
+},
+"title": {
+"ru": "SMORODINA: рекламный ролик (концепт)",
+"en": "SMORODINA: ad video (concept)"
+},
+"sub": {
+"ru": "Скраб для тела, кокос и лайм",
+"en": "Body scrub, coconut and lime"
+},
+"desc": {
+"ru": "Концепт рекламного ролика и фото для бренда SMORODINA: крупные текстуры скраба, кокос, лайм и мягкий свет. Фото и видео сделаны нейросетями с нуля.",
+"en": "A concept ad video and photo set for SMORODINA: close textures of the scrub, coconut, lime and soft light. The photos and the video are generated from scratch."
+},
+"tools": [
+"Nano Banana",
+"Grok"
+],
+"media": [
+{
+"t": "v",
+"src": "v/smorodina.mp4",
+"poster": "b/p_smorodina.webp",
+"ar": 0.55
+},
+{
+"t": "i",
+"src": "b/sm01.webp"
+},
+{
+"t": "i",
+"src": "b/sm02.webp"
+},
+{
+"t": "i",
+"src": "b/sm03.webp"
+},
+{
+"t": "i",
+"src": "b/sm04.webp"
+},
+{
+"t": "i",
+"src": "b/sm05.webp"
+},
+{
+"t": "i",
+"src": "b/sm06.webp"
+},
+{
+"t": "i",
+"src": "b/sm07.webp"
+}
+]
+},
+{
+"id": "lapochka",
+"cat": "ads",
+"badge": "concept",
+"ar": 0.56,
+"cover": "b/p_lapochka.webp",
+"preview": "v/lapochka.mp4",
+"tag": {
+"ru": "AI-видео",
+"en": "AI video"
+},
+"title": {
+"ru": "Lapochka и мороженое: рекламные ролики (концепт)",
+"en": "Lapochka and ice cream: ad videos (concept)"
+},
+"sub": {
+"ru": "Реальные товары, вертикальный формат",
+"en": "Real products, vertical format"
+},
+"desc": {
+"ru": "Два концепта роликов для соцсетей: напиток Lapochka и мороженое манго. Упаковка взята с реальных товаров, движение камеры, фрукты и брызги сгенерированы.",
+"en": "Two concept videos for social media: the Lapochka drink and a mango ice cream. The packaging comes from real products. The camera moves, the fruit and the splashes are generated."
+},
+"tools": [
+"Nano Banana",
+"Seedance"
+],
+"media": [
+{
+"t": "v",
+"src": "v/lapochka.mp4",
+"poster": "b/p_lapochka.webp",
+"ar": 0.56,
+"w": 360
+},
+{
+"t": "v",
+"src": "v/icecream.mp4",
+"poster": "b/p_icecream.webp",
+"ar": 0.56,
+"w": 360
+}
+]
+},
+{
+"id": "skoya",
+"cat": "ads",
+"badge": "concept",
+"ar": 0.56,
+"cover": "b/p_skoya.webp",
+"preview": "v/skoya.mp4",
+"tag": {
+"ru": "AI-видео",
+"en": "AI video"
+},
+"title": {
+"ru": "SKOYA и Ryze: рекламные ролики (концепт)",
+"en": "SKOYA and Ryze: ad videos (concept)"
+},
+"sub": {
+"ru": "Вертикальная реклама для соцсетей",
+"en": "Vertical social ads"
+},
+"desc": {
+"ru": "Два коротких концепта. SKOYA: пустая комната наполняется мебелью под текст на экране. Ryze: говорящая героиня в формате UGC-рекламы сервиса. Заказчика не было.",
+"en": "Two short concepts. SKOYA: an empty room fills up with furniture under on-screen text. Ryze: a talking heroine in a UGC-style ad for the service. There was no client."
+},
+"tools": [],
+"media": [
+{
+"t": "v",
+"src": "v/skoya.mp4",
+"poster": "b/p_skoya.webp",
+"ar": 0.56
+},
+{
+"t": "v",
+"src": "v/ryze.mp4",
+"poster": "b/p_ryze.webp",
+"ar": 0.56
+}
+]
+},
+{
+"id": "cards",
+"cat": "ads",
+"badge": "concept",
+"ar": 0.75,
+"cover": "a/mk01.webp",
+"tag": {
+"ru": "Карточки",
+"en": "Product cards"
+},
+"title": {
+"ru": "Карточки товаров для маркетплейсов (концепт)",
+"en": "Marketplace product cards (concept)"
+},
+"sub": {
+"ru": "Givenchy, сумка, платье, крем, серьги",
+"en": "Perfume, bag, dress, cream, earrings"
+},
+"desc": {
+"ru": "Карточки на основе реальных товаров. Изображение товара сохранено, фон, композиция и инфографика созданы в GPT Image. Тексты и характеристики на карточках условные.",
+"en": "Cards built from real products. The product itself is kept, while the background, composition and infographics are made in GPT Image. The texts and specs on the cards are placeholders."
+},
+"tools": [
+"GPT Image"
+],
+"media": [
+{
+"t": "i",
+"src": "a/mk01.webp"
+},
+{
+"t": "i",
+"src": "a/mk02.webp"
+},
+{
+"t": "i",
+"src": "a/mk03.webp"
+},
+{
+"t": "i",
+"src": "a/mk04.webp"
+},
+{
+"t": "i",
+"src": "a/mk05.webp"
+}
+]
+},
+{
+"id": "s12",
+"cat": "photo",
+"badge": "concept",
+"featured": false,
+"ar": 0.75,
+"cover": "b/st01.webp",
+"tag": {
+"ru": "AI-фото",
+"en": "AI photo"
+},
+"title": {
+"ru": "12storeez: концепт фотосессии",
+"en": "12storeez: photo shoot concept"
+},
+"sub": {
+"ru": "Белое платье в лесу",
+"en": "White dress in the forest"
+},
+"desc": {
+"ru": "Концепт съёмки для бренда 12storeez. Героиня вымышленная, одежда настоящая. Серия построена на лесном свете и одном платье в разных ракурсах.",
+"en": "A shoot concept for the brand 12storeez. The model is fictional, the clothes are real. The series is built on forest light and one dress from different angles."
+},
+"tools": [
+"Nano Banana"
+],
+"media": [
+{
+"t": "i",
+"src": "b/st01.webp"
+},
+{
+"t": "i",
+"src": "b/st02.webp"
+},
+{
+"t": "i",
+"src": "b/st03.webp"
+},
+{
+"t": "i",
+"src": "b/st04.webp"
+},
+{
+"t": "i",
+"src": "b/st05.webp"
+},
+{
+"t": "i",
+"src": "b/st06.webp"
+},
+{
+"t": "i",
+"src": "b/st07.webp"
+},
+{
+"t": "i",
+"src": "b/st08.webp"
+},
+{
+"t": "i",
+"src": "b/st09.webp"
+},
+{
+"t": "i",
+"src": "b/st10.webp"
+}
+]
+},
+{
+"id": "sokolov",
+"cat": "photo",
+"badge": "concept",
+"ar": 0.75,
+"cover": "b/so01.webp",
+"tag": {
+"ru": "AI-фото",
+"en": "AI photo"
+},
+"title": {
+"ru": "Sokolov: концепт фотосессии",
+"en": "Sokolov: photo shoot concept"
+},
+"sub": {
+"ru": "Ювелирные украшения",
+"en": "Jewellery"
+},
+"desc": {
+"ru": "Концепт съёмки украшений Sokolov на берегу моря. Украшения настоящие, модель вымышленная.",
+"en": "A concept shoot of Sokolov jewellery by the sea. The jewellery is real, the model is fictional."
+},
+"tools": [
+"Nano Banana"
+],
+"media": [
+{
+"t": "i",
+"src": "b/so01.webp"
+},
+{
+"t": "i",
+"src": "b/so02.webp"
+},
+{
+"t": "i",
+"src": "b/so03.webp"
+},
+{
+"t": "i",
+"src": "b/so04.webp"
+},
+{
+"t": "i",
+"src": "b/so05.webp"
+},
+{
+"t": "i",
+"src": "b/so06.webp"
+}
+]
+},
+{
+"id": "ruby",
+"cat": "photo",
+"badge": "concept",
+"ar": 0.75,
+"cover": "b/ru01.webp",
+"tag": {
+"ru": "AI-фото",
+"en": "AI photo"
+},
+"title": {
+"ru": "«Рубин»: нейрофотосессия (концепт)",
+"en": "“Ruby”: AI photo shoot (concept)"
+},
+"sub": {
+"ru": "Чёрный жакет и рубиновые серьги",
+"en": "Black blazer and ruby earrings"
+},
+"desc": {
+"ru": "Студийная съёмка в красном свете: чёрный жакет, рубиновые серьги, тёмные волосы.",
+"en": "A studio shoot in red light: a black blazer, ruby earrings, dark hair."
+},
+"tools": [
+"Nano Banana"
+],
+"media": [
+{
+"t": "i",
+"src": "b/ru01.webp"
+},
+{
+"t": "i",
+"src": "b/ru02.webp"
+},
+{
+"t": "i",
+"src": "b/ru03.webp"
+},
+{
+"t": "i",
+"src": "b/ru04.webp"
+},
+{
+"t": "i",
+"src": "b/ru05.webp"
+},
+{
+"t": "i",
+"src": "b/ru06.webp"
+},
+{
+"t": "i",
+"src": "b/ru07.webp"
+},
+{
+"t": "i",
+"src": "b/ru08.webp"
+},
+{
+"t": "i",
+"src": "b/ru09.webp"
+}
+]
+},
+{
+"id": "yellow",
+"cat": "photo",
+"badge": "concept",
+"ar": 0.75,
+"cover": "b/ye01.webp",
+"tag": {
+"ru": "AI-фото",
+"en": "AI photo"
+},
+"title": {
+"ru": "«Жёлтое и розовое»: нейрофотосессия (концепт)",
+"en": "“Yellow and Pink”: AI photo shoot (concept)"
+},
+"sub": {
+"ru": "Жёлтое платье в розовом пространстве",
+"en": "Yellow dress in a pink set"
+},
+"desc": {
+"ru": "Графичная съёмка: жёлтое платье с объёмными рукавами и геометричные розово-жёлтые декорации.",
+"en": "A graphic shoot: a yellow puff-sleeve dress in geometric pink and yellow sets."
+},
+"tools": [
+"Nano Banana"
+],
+"media": [
+{
+"t": "i",
+"src": "b/ye01.webp"
+},
+{
+"t": "i",
+"src": "b/ye02.webp"
+},
+{
+"t": "i",
+"src": "b/ye03.webp"
+},
+{
+"t": "i",
+"src": "b/ye04.webp"
+},
+{
+"t": "i",
+"src": "b/ye05.webp"
+},
+{
+"t": "i",
+"src": "b/ye06.webp"
+},
+{
+"t": "i",
+"src": "b/ye07.webp"
+}
+]
+},
+{
+"id": "cozy",
+"cat": "photo",
+"badge": "own",
+"ar": 0.56,
+"cover": "b/pk01.webp",
+"tag": {
+"ru": "AI-фото",
+"en": "AI photo"
+},
+"title": {
+"ru": "Розовый уют: lifestyle-кадры",
+"en": "Pink cosy: lifestyle shots"
+},
+"sub": {
+"ru": "Розы, кофе, свечи, тёплый плед",
+"en": "Roses, coffee, candles, a warm blanket"
+},
+"desc": {
+"ru": "Серия атмосферных кадров в розово-бежевой гамме для соцсетей и брендов уюта, парфюмерии и дома.",
+"en": "A series of atmospheric shots in pink and beige for social media and home, fragrance and cosy-lifestyle brands."
+},
+"tools": [],
+"media": [
+{
+"t": "i",
+"src": "b/pk01.webp"
+},
+{
+"t": "i",
+"src": "b/pk02.webp"
+},
+{
+"t": "i",
+"src": "b/pk03.webp"
+},
+{
+"t": "i",
+"src": "b/pk04.webp"
+},
+{
+"t": "i",
+"src": "b/pk05.webp"
+},
+{
+"t": "i",
+"src": "b/pk06.webp"
+},
+{
+"t": "i",
+"src": "b/pk07.webp"
+},
+{
+"t": "i",
+"src": "b/pk08.webp"
+},
+{
+"t": "i",
+"src": "b/pk09.webp"
+},
+{
+"t": "i",
+"src": "b/pk10.webp"
+}
+]
+},
+{
+"id": "avatar",
+"cat": "avatars",
+"badge": "personal",
+"featured": false,
+"ar": 0.56,
+"cover": "a/p_av3.webp",
+"preview": "v/av3.mp4",
+"tag": {
+"ru": "Аватар",
+"en": "Avatar"
+},
+"title": {
+"ru": "AI-аватар с моим лицом и голосом",
+"en": "AI avatar with my face and voice"
+},
+"sub": {
+"ru": "Личный проект: пять роликов",
+"en": "Personal project: five videos"
+},
+"desc": {
+"ru": "Аватар на основе моих фотографий и записи голоса. Он рассказывает про нейросети в формате Reels: говорит, жестикулирует, держит микрофон. Так же можно сделать аватар для эксперта или блогера.",
+"en": "An avatar built from my own photos and a voice recording. It talks about AI in a Reels format: speaks, gestures, holds a microphone. The same approach works for an expert’s or a blogger’s avatar."
+},
+"tools": [
+"Nano Banana",
+"Wan",
+"Grok",
+"ElevenLabs"
+],
+"media": [
+{
+"t": "v",
+"src": "v/av3.mp4",
+"poster": "a/p_av3.webp",
+"ar": 0.56
+},
+{
+"t": "v",
+"src": "v/av1.mp4",
+"poster": "a/p_av1.webp",
+"ar": 0.56
+},
+{
+"t": "v",
+"src": "v/av4.mp4",
+"poster": "a/p_av4.webp",
+"ar": 0.56
+},
+{
+"t": "v",
+"src": "v/av2.mp4",
+"poster": "a/p_av2.webp",
+"ar": 0.56
+},
+{
+"t": "v",
+"src": "v/av5.mp4",
+"poster": "a/p_av5.webp",
+"ar": 0.56
+},
+{
+"t": "i",
+"src": "a/cc01.webp"
+},
+{
+"t": "i",
+"src": "a/cc02.webp"
+},
+{
+"t": "i",
+"src": "a/cc03.webp"
+}
+]
+},
+{
+"id": "montage",
+"cat": "avatars",
+"badge": "own",
+"ar": 1.78,
+"cover": "b/p_montage.webp",
+"preview": "v/montage.mp4",
+"tag": {
+"ru": "Монтаж",
+"en": "Editing"
+},
+"title": {
+"ru": "Окна и порталы: сложный монтаж",
+"en": "Windows and portals: compositing"
+},
+"sub": {
+"ru": "Наложение видео и маски",
+"en": "Video overlays and masks"
+},
+"desc": {
+"ru": "Ролик со сложным монтажом. Героиня «вытаскивает» из окон разные видео и переходит в них, поверх её движений наложены маски.",
+"en": "A video with heavy compositing. The heroine pulls different videos out of windows and steps into them, with masks layered over her movement."
+},
+"tools": [
+"Nano Banana",
+"Kling Motion",
+"CapCut"
+],
+"media": [
+{
+"t": "v",
+"src": "v/montage.mp4",
+"poster": "b/p_montage.webp",
+"ar": 1.78
+}
+]
+},
+{
+"id": "dance",
+"cat": "avatars",
+"badge": "own",
+"ar": 0.56,
+"cover": "a/p_dance.webp",
+"preview": "v/dance.mp4",
+"tag": {
+"ru": "AI-видео",
+"en": "AI video"
+},
+"title": {
+"ru": "AI-танец",
+"en": "AI dance"
+},
+"sub": {
+"ru": "Персонаж в движении",
+"en": "A character in motion"
+},
+"desc": {
+"ru": "Танцевальный ролик с AI-персонажем в лофте с неоновыми линиями.",
+"en": "A dance video with an AI character in a loft with neon lights."
+},
+"tools": [],
+"media": [
+{
+"t": "v",
+"src": "v/dance.mp4",
+"poster": "a/p_dance.webp",
+"ar": 0.56
+}
+]
+},
+{
+"id": "twin",
+"cat": "avatars",
+"badge": "own",
+"ar": 0.56,
+"cover": "a/p_aitwin.webp",
+"preview": "v/aitwin.mp4",
+"tag": {
+"ru": "Аватар",
+"en": "Avatar"
+},
+"title": {
+"ru": "UGC-видео с AI-двойником",
+"en": "UGC video with an AI twin"
+},
+"sub": {
+"ru": "Формат «говорящая голова»",
+"en": "Talking-head format"
+},
+"desc": {
+"ru": "Ролик в стиле блогера: AI-двойник рассказывает, как сделать видео из одного фото.",
+"en": "A blogger-style clip: an AI twin explains how to make a video from a single photo."
+},
+"tools": [],
+"media": [
+{
+"t": "v",
+"src": "v/aitwin.mp4",
+"poster": "a/p_aitwin.webp",
+"ar": 0.56
+}
+]
+},
+{
+"id": "cinderella",
+"cat": "personal",
+"badge": "inspired",
+"ar": 1.78,
+"cover": "a/p_cinderella.webp",
+"preview": "v/cinderella.mp4",
+"tag": {
+"ru": "AI-видео",
+"en": "AI video"
+},
+"title": {
+"ru": "Золушка: сказка по мотивам",
+"en": "Cinderella: a retelling"
+},
+"sub": {
+"ru": "Персонажи, костюмы и видео",
+"en": "Characters, costumes and video"
+},
+"desc": {
+"ru": "Личный проект по мотивам сказки: листы персонажей для мачехи, сводных сестёр и Золушки, а затем короткое видео на их основе.",
+"en": "A personal project inspired by the fairy tale: character sheets for the stepmother, stepsisters and Cinderella, then a short video built on them."
+},
+"tools": [],
+"media": [
+{
+"t": "v",
+"src": "v/cinderella.mp4",
+"poster": "a/p_cinderella.webp",
+"ar": 1.78
+},
+{
+"t": "i",
+"src": "a/ci01.webp"
+},
+{
+"t": "i",
+"src": "a/ci02.webp"
+},
+{
+"t": "i",
+"src": "a/ci03.webp"
+},
+{
+"t": "i",
+"src": "a/ci04.webp"
+},
+{
+"t": "i",
+"src": "a/ci05.webp"
+},
+{
+"t": "i",
+"src": "a/ci06.webp"
+},
+{
+"t": "i",
+"src": "a/ci07.webp"
+},
+{
+"t": "i",
+"src": "a/ci08.webp"
+},
+{
+"t": "i",
+"src": "a/ci09.webp"
+}
+]
+},
+{
+"id": "hitch",
+"cat": "personal",
+"badge": "inspired",
+"ar": 1.78,
+"cover": "a/p_hitch.webp",
+"preview": "v/hitch.mp4",
+"tag": {
+"ru": "AI-видео",
+"en": "AI video"
+},
+"title": {
+"ru": "«Автостопом по галактике»: по мотивам",
+"en": "“The Hitchhiker’s Guide to the Galaxy”: inspired by"
+},
+"sub": {
+"ru": "Раскадровка, листы героев, анимация",
+"en": "Storyboard, character sheets, animation"
+},
+"desc": {
+"ru": "Личная работа по мотивам романа. Полный путь от раскадровки и листов персонажей до анимированной сцены в мягком живописном стиле.",
+"en": "A personal piece inspired by the novel. The full route from storyboard and character sheets to an animated scene in a soft painterly style."
+},
+"tools": [],
+"media": [
+{
+"t": "v",
+"src": "v/hitch.mp4",
+"poster": "a/p_hitch.webp",
+"ar": 1.78
+},
+{
+"t": "i",
+"src": "a/hg01.webp"
+},
+{
+"t": "i",
+"src": "a/hg02.webp"
+},
+{
+"t": "i",
+"src": "a/hg03.webp"
+},
+{
+"t": "i",
+"src": "a/hg04.webp"
+},
+{
+"t": "i",
+"src": "a/hg05.webp"
+},
+{
+"t": "i",
+"src": "a/hg06.webp"
+},
+{
+"t": "i",
+"src": "a/hg07.webp"
+},
+{
+"t": "i",
+"src": "a/hg08.webp"
+},
+{
+"t": "i",
+"src": "a/hg09.webp"
+}
+]
+},
+{
+"id": "tarzan",
+"cat": "personal",
+"badge": "inspired",
+"ar": 1.78,
+"cover": "b/ta01.webp",
+"preview": "v/tarzan.mp4",
+"tag": {
+"ru": "Анимация",
+"en": "Animation"
+},
+"title": {
+"ru": "Тарзан: анимация по мотивам",
+"en": "Tarzan: animated, inspired by"
+},
+"sub": {
+"ru": "Дождь, джунгли и один жест",
+"en": "Rain, jungle and a single gesture"
+},
+"desc": {
+"ru": "Короткая сцена в классической рисованной манере по мотивам мультфильма.",
+"en": "A short scene in a classic hand-drawn manner, inspired by the animated film."
+},
+"tools": [],
+"links": [
+{
+"l": {
+"ru": "Смотреть в Instagram",
+"en": "Watch on Instagram"
+},
+"u": "https://www.instagram.com/reel/DcxzGWOiNCL/"
+}
+],
+"media": [
+{
+"t": "v",
+"src": "v/tarzan.mp4",
+"poster": "b/p_tarzan.webp",
+"ar": 1.75
+},
+{
+"t": "i",
+"src": "b/ta01.webp"
+},
+{
+"t": "i",
+"src": "b/ta02.webp"
+},
+{
+"t": "i",
+"src": "b/ta03.webp"
+},
+{
+"t": "i",
+"src": "b/ta04.webp"
+},
+{
+"t": "i",
+"src": "b/ta05.webp"
+},
+{
+"t": "i",
+"src": "b/ta06.webp"
+}
+]
+},
+{
+"id": "barbie",
+"cat": "personal",
+"badge": "inspired",
+"ar": 0.75,
+"cover": "a/ba01.webp",
+"tag": {
+"ru": "AI-фото",
+"en": "AI photo"
+},
+"title": {
+"ru": "Нейрофотосессия в стиле «Барби»",
+"en": "AI photo shoot in the style of “Barbie”"
+},
+"sub": {
+"ru": "Личный проект, по мотивам фильма",
+"en": "Personal project, inspired by the film"
+},
+"desc": {
+"ru": "Серия кадров в эстетике фильма: розовый мир, кабриолет, лодка и неоновая спортивная форма. AI-персонажи по мотивам, реальных людей на кадрах нет.",
+"en": "A series in the film’s aesthetic: a pink world, a convertible, a boat and neon sportswear. AI characters inspired by the film, no real people appear in these images."
+},
+"tools": [],
+"media": [
+{
+"t": "i",
+"src": "a/ba01.webp"
+},
+{
+"t": "i",
+"src": "a/ba02.webp"
+},
+{
+"t": "i",
+"src": "a/ba03.webp"
+},
+{
+"t": "i",
+"src": "a/ba04.webp"
+},
+{
+"t": "i",
+"src": "a/ba05.webp"
+},
+{
+"t": "i",
+"src": "a/ba06.webp"
+},
+{
+"t": "i",
+"src": "a/ba07.webp"
+},
+{
+"t": "i",
+"src": "a/ba08.webp"
+}
+]
+},
+{
+"id": "frozen",
+"cat": "personal",
+"badge": "inspired",
+"ar": 0.75,
+"cover": "a/fr01.webp",
+"tag": {
+"ru": "AI-фото",
+"en": "AI photo"
+},
+"title": {
+"ru": "Нейрофотосессия в стиле «Холодного сердца»",
+"en": "AI photo shoot in the style of “Frozen”"
+},
+"sub": {
+"ru": "Личный проект, по мотивам мультфильма",
+"en": "Personal project, inspired by the film"
+},
+"desc": {
+"ru": "Ледяные залы, замёрзшее озеро и платье цвета зимнего неба. AI-персонажи по мотивам, реальных людей на кадрах нет.",
+"en": "Ice halls, a frozen lake and a dress the colour of a winter sky. AI characters inspired by the film, no real people appear in these images."
+},
+"tools": [],
+"media": [
+{
+"t": "i",
+"src": "a/fr01.webp"
+},
+{
+"t": "i",
+"src": "a/fr02.webp"
+},
+{
+"t": "i",
+"src": "a/fr03.webp"
+},
+{
+"t": "i",
+"src": "a/fr04.webp"
+},
+{
+"t": "i",
+"src": "a/fr05.webp"
+},
+{
+"t": "i",
+"src": "a/fr06.webp"
+}
+]
+},
+{
+"id": "wicked",
+"cat": "personal",
+"badge": "inspired",
+"ar": 0.75,
+"cover": "b/wi01.webp",
+"tag": {
+"ru": "AI-фото",
+"en": "AI photo"
+},
+"title": {
+"ru": "Нейрофотосессия в стиле «Злая»",
+"en": "AI photo shoot in the style of “Wicked”"
+},
+"sub": {
+"ru": "Личный проект, по мотивам фильма",
+"en": "Personal project, inspired by the film"
+},
+"desc": {
+"ru": "Невеста, розовое платье в духе Глинды, зелёная форма, львёнок в лесу и арка из тюля. AI-персонажи по мотивам, реальных людей на кадрах нет.",
+"en": "A bride, a Glinda-style pink gown, a green uniform, a lion cub in the forest and a tulle arch. AI characters inspired by the film, no real people appear in these images."
+},
+"tools": [],
+"media": [
+{
+"t": "i",
+"src": "b/wi01.webp"
+},
+{
+"t": "i",
+"src": "b/wi02.webp"
+},
+{
+"t": "i",
+"src": "b/wi03.webp"
+},
+{
+"t": "i",
+"src": "b/wi04.webp"
+},
+{
+"t": "i",
+"src": "b/wi05.webp"
+},
+{
+"t": "i",
+"src": "b/wi06.webp"
+},
+{
+"t": "i",
+"src": "b/wi07.webp"
+},
+{
+"t": "i",
+"src": "b/wi08.webp"
+}
+]
+},
+{
+"id": "pyth",
+"cat": "personal",
+"badge": "own",
+"ar": 1.78,
+"cover": "b/p_pyth.webp",
+"preview": "v/pyth.mp4",
+"tag": {
+"ru": "Анимация",
+"en": "Animation"
+},
+"title": {
+"ru": "Пифагор: мультяшный урок",
+"en": "Pythagoras: a cartoon lesson"
+},
+"sub": {
+"ru": "3D-персонажи в классе",
+"en": "3D characters in a classroom"
+},
+"desc": {
+"ru": "Мультяшные персонажи в 3D-стиле: школьники и Пифагор в кабинете с зеркалом-судом.",
+"en": "Cartoon characters in a 3D style: schoolchildren and Pythagoras in a study with a court behind them."
+},
+"tools": [],
+"media": [
+{
+"t": "v",
+"src": "v/pyth.mp4",
+"poster": "b/p_pyth.webp",
+"ar": 1.78
+}
+]
+},
+{
+"id": "tavern",
+"cat": "personal",
+"badge": "inspired",
+"ar": 1.78,
+"cover": "b/p_tavern.webp",
+"preview": "v/tavern.mp4",
+"tag": {
+"ru": "AI-видео",
+"en": "AI video"
+},
+"title": {
+"ru": "Таверна: сцена в духе фэнтези",
+"en": "The tavern: a fantasy-style scene"
+},
+"sub": {
+"ru": "Свечи, разговор, крупные планы",
+"en": "Candles, conversation, close-ups"
+},
+"desc": {
+"ru": "Кинематографичная сцена: героиня и её собеседник в таверне при свечах.",
+"en": "A cinematic scene: a heroine and her companion in a candlelit tavern."
+},
+"tools": [],
+"media": [
+{
+"t": "v",
+"src": "v/tavern.mp4",
+"poster": "b/p_tavern.webp",
+"ar": 1.78
+}
+]
+},
+{
+"id": "fan",
+"cat": "personal",
+"badge": "inspired",
+"ar": 0.56,
+"cover": "a/p_f3.webp",
+"preview": "v/f3.mp4",
+"tag": {
+"ru": "AI-видео",
+"en": "AI video"
+},
+"title": {
+"ru": "Фан-серии по мотивам",
+"en": "Fan series, inspired by"
+},
+"sub": {
+"ru": "Короткие фрагменты",
+"en": "Short excerpts"
+},
+"desc": {
+"ru": "Короткие фрагменты из моих личных серий по мотивам любимых историй. Полные версии выходят в Instagram @fairytales_dramiona.",
+"en": "Short excerpts from my personal series inspired by favourite stories. Full versions are published on Instagram @fairytales_dramiona."
+},
+"tools": [],
+"links": [
+{
+"l": {
+"ru": "Instagram @fairytales_dramiona",
+"en": "Instagram @fairytales_dramiona"
+},
+"u": "https://www.instagram.com/fairytales_dramiona/"
+}
+],
+"media": [
+{
+"t": "v",
+"src": "v/f1.mp4",
+"poster": "a/p_f1.webp",
+"ar": 0.56
+},
+{
+"t": "v",
+"src": "v/f2.mp4",
+"poster": "a/p_f2.webp",
+"ar": 1.78
+},
+{
+"t": "v",
+"src": "v/f3.mp4",
+"poster": "a/p_f3.webp",
+"ar": 0.56
+},
+{
+"t": "v",
+"src": "v/f4.mp4",
+"poster": "a/p_f4.webp",
+"ar": 0.56
+},
+{
+"t": "v",
+"src": "v/f5.mp4",
+"poster": "a/p_f5.webp",
+"ar": 1.78
+},
+{
+"t": "v",
+"src": "v/f6.mp4",
+"poster": "a/p_f6.webp",
+"ar": 1.78
+},
+{
+"t": "v",
+"src": "v/f7.mp4",
+"poster": "a/p_f7.webp",
+"ar": 0.56
+},
+{
+"t": "v",
+"src": "v/f8.mp4",
+"poster": "a/p_f8.webp",
+"ar": 1.78
+},
+{
+"t": "v",
+"src": "v/f9.mp4",
+"poster": "a/p_f9.webp",
+"ar": 1.78
+},
+{
+"t": "v",
+"src": "v/f10.mp4",
+"poster": "a/p_f10.webp",
+"ar": 0.56
+},
+{
+"t": "v",
+"src": "v/f11.mp4",
+"poster": "a/p_f11.webp",
+"ar": 0.56
+},
+{
+"t": "v",
+"src": "v/f12.mp4",
+"poster": "a/p_f12.webp",
+"ar": 1.78
+},
+{
+"t": "v",
+"src": "v/f13.mp4",
+"poster": "a/p_f13.webp",
+"ar": 0.56
+}
+]
+},
+{
+"id": "comics",
+"cat": "illus",
+"badge": "inspired",
+"ar": 1.78,
+"cover": "a/il01.webp",
+"tag": {
+"ru": "Иллюстрация",
+"en": "Illustration"
+},
+"title": {
+"ru": "Иллюстрации в стиле комикса",
+"en": "Comic-style illustrations"
+},
+"sub": {
+"ru": "Библиотека, лаборатория, Министерство",
+"en": "Library, laboratory, the Ministry"
+},
+"desc": {
+"ru": "Иллюстрации по мотивам любимой истории: тёплые интерьеры, книги, магические лаборатории и герои в тёмных и светлых нарядах.",
+"en": "Illustrations inspired by a favourite story: warm interiors, books, magical laboratories and characters in dark and light outfits."
+},
+"tools": [],
+"media": [
+{
+"t": "i",
+"src": "a/il01.webp"
+},
+{
+"t": "i",
+"src": "a/il02.webp"
+},
+{
+"t": "i",
+"src": "a/il03.webp"
+},
+{
+"t": "i",
+"src": "a/il04.webp"
+},
+{
+"t": "i",
+"src": "a/il05.webp"
+},
+{
+"t": "i",
+"src": "a/il06.webp"
+},
+{
+"t": "i",
+"src": "a/il07.webp"
+},
+{
+"t": "i",
+"src": "a/il08.webp"
+},
+{
+"t": "i",
+"src": "a/il09.webp"
+},
+{
+"t": "i",
+"src": "a/il10.webp"
+},
+{
+"t": "i",
+"src": "a/il11.webp"
+},
+{
+"t": "i",
+"src": "a/il12.webp"
+}
+]
+},
+{
+"id": "stickers",
+"cat": "illus",
+"badge": "own",
+"ar": 1,
+"cover": "b/sk01.webp",
+"tag": {
+"ru": "Стикеры",
+"en": "Stickers"
+},
+"title": {
+"ru": "Набор стикеров для Telegram",
+"en": "Telegram sticker pack"
+},
+"sub": {
+"ru": "Эмоции героев",
+"en": "Character emotions"
+},
+"desc": {
+"ru": "Набор эмоциональных стикеров с героями в мультяшной манере: паника, смех, попкорн, объятия и кот.",
+"en": "A set of emotional stickers with characters in a cartoon manner: panic, laughter, popcorn, a hug and a cat."
+},
+"tools": [],
+"links": [
+{
+"l": {
+"ru": "Открыть набор в Telegram",
+"en": "Open the pack in Telegram"
+},
+"u": "https://t.me/addstickers/dramiona_pack_by_TgEmodziBot"
+}
+],
+"media": [
+{
+"t": "i",
+"src": "b/sk01.webp"
+},
+{
+"t": "i",
+"src": "b/sk02.webp"
+},
+{
+"t": "i",
+"src": "b/sk03.webp"
+},
+{
+"t": "i",
+"src": "b/sk04.webp"
+},
+{
+"t": "i",
+"src": "b/sk05.webp"
+},
+{
+"t": "i",
+"src": "b/sk06.webp"
+},
+{
+"t": "i",
+"src": "b/sk07.webp"
+},
+{
+"t": "i",
+"src": "b/sk08.webp"
+},
+{
+"t": "i",
+"src": "b/sk09.webp"
+}
+]
+}
+];
+const O=v=>v&&typeof v==='object'?v:{ru:v,en:v};
+const UI={
+nav_work:{ru:'Работы',en:'Work'},nav_about:{ru:'Обо мне',en:'About'},nav_services:{ru:'Услуги',en:'Services'},nav_process:{ru:'Процесс',en:'Process'},nav_contact:{ru:'Контакты',en:'Contact'},
+cta_tg:{ru:'Написать в Telegram',en:'Message on Telegram'},cta_short:{ru:'Написать',en:'Message'},
+hero_hi:{ru:'Привет, я',en:'Hi, I’m'},hero_name:{ru:'Юлия Чуйкина.',en:'Julia Chuikina.'},
+hero_role:{ru:'AI-креатор: реклама, фото и видео для брендов и малого бизнеса',en:'AI creator: ads, photo and video for brands and small businesses'},
+hero_p:{ru:'Делаю рекламные ролики, фотосессии товаров, трейлеры и аватары с помощью нейросетей. От идеи до готовых файлов для соцсетей и маркетплейсов.',en:'I make ad videos, product shoots, trailers and avatars with AI. From the idea to finished files for social media and marketplaces.'},
+btn_work:{ru:'Смотреть работы',en:'View my work'},btn_about:{ru:'Обо мне',en:'About me'},
+avail_t:{ru:'Открыта для проектов',en:'Available for work'},avail_p:{ru:'Реклама, фотосессии, аватары и трейлеры. Цены по запросу.',en:'Ads, photo shoots, avatars and trailers. Prices on request.'},avail_cta:{ru:'Обсудить проект',en:'Discuss a project'},
+tools_lab:{ru:'Работаю в',en:'I work in'},
+feat_e:{ru:'Избранное',en:'Selected work'},feat_h:{ru:'Реклама, фото и видео, сделанные нейросетями',en:'Ads, photo and video made with AI'},btn_all:{ru:'Все проекты',en:'All projects'},
+work_e:{ru:'Портфолио',en:'Portfolio'},work_h:{ru:'Все проекты',en:'All projects'},
+about_e:{ru:'Обо мне',en:'About me'},about_h:{ru:'Дизайнер, которая работает с нейросетями',en:'A designer who works with AI'},
+about_p1:{ru:'Я Юлия. Восемь лет работала графическим дизайнером и SMM-специалистом, а последние два года делаю рекламу, фото и видео с помощью нейросетей.',en:'I’m Julia. I spent eight years as a graphic designer and SMM specialist, and for the last two years I have been making ads, photo and video with AI.'},
+about_p2:{ru:'Прошла 9-недельный курс по AI-видео в XR School. Соединяю взгляд дизайнера, понимание задач маркетинга и генеративные инструменты, чтобы у бренда был ролик или серия кадров без съёмочной площадки и большого бюджета.',en:'I completed the 9-week AI video course at XR School. I combine a designer’s eye, an understanding of marketing tasks and generative tools, so a brand gets a video or a set of images without a film set or a large budget.'},
+svc_e:{ru:'Услуги',en:'Services'},svc_h:{ru:'Что я делаю',en:'What I do'},
+svc_note:{ru:'Стоимость зависит от длительности, числа кадров и сроков. Напишите в Telegram, и я посчитаю.',en:'The price depends on length, number of shots and deadlines. Message me on Telegram and I will quote it.'},
+price:{ru:'Цена: по запросу',en:'Price: on request'},
+proc_e:{ru:'Как я работаю',en:'How I work'},proc_h:{ru:'Пять шагов от идеи до файла',en:'Five steps from idea to file'},
+ct_e:{ru:'Контакты',en:'Contact'},ct_h:{ru:'Давайте сделаем что-то <em>красивое</em> вместе',en:'Let’s make something <em>beautiful</em> together'},
+ct_p:{ru:'Расскажите о задаче в Telegram. Обычно достаточно пары строк: что за продукт, где будет жить ролик и к какому сроку он нужен.',en:'Tell me about the task on Telegram. A couple of lines is usually enough: what the product is, where the video will live and when you need it.'},
+foot:{ru:'AI-креатор · реклама, фото и видео',en:'AI creator · ads, photo and video'},
+m_tools:{ru:'Инструменты',en:'Tools'},m_close:{ru:'Закрыть',en:'Close'},m_more:{ru:'Ссылки',en:'Links'},m_cat:{ru:'Раздел',en:'Section'}
+};
+const CATS=[{k:'all',ru:'Все',en:'All'},{k:'real',ru:'Реальные заказы',en:'Real orders'},{k:'ads',ru:'Реклама и продукт',en:'Ads and product'},{k:'photo',ru:'Фото и мода',en:'Photo and fashion'},{k:'avatars',ru:'Аватары и динамика',en:'Avatars and motion'},{k:'personal',ru:'Личные проекты',en:'Personal projects'},{k:'illus',ru:'Иллюстрации и стикеры',en:'Illustrations and stickers'}];
+const BADGE={real:{ru:'Реальный заказ',en:'Real order'},concept:{ru:'Концепт',en:'Concept'},personal:{ru:'Личный проект',en:'Personal project'},inspired:{ru:'По мотивам',en:'Inspired by'},own:{ru:'Авторская работа',en:'Own work'}};
+const LEG=[['real',{ru:'сделано для заказчика',en:'made for a client'}],['concept',{ru:'моя инициатива, бренд не заказывал',en:'my own initiative, not commissioned'}],['inspired',{ru:'личная работа по мотивам фильма, книги или сказки',en:'a personal piece inspired by a film, book or tale'}]];
+const TOOLS=['Seedance','Grok','Kling','Veo','Higgsfield','Nano Banana','Midjourney','GPT Image','Seedream','ChatGPT','Claude','CapCut','Premiere Pro','After Effects','Photoshop','Topaz','ElevenLabs','Wan','Figma','Illustrator','Canva'];
+const STATS=[[ '8',{ru:'лет в графическом дизайне и SMM',en:'years in graphic design and SMM'}],['2',{ru:'года в AI-генерации',en:'years in AI generation'}],['21',{ru:'инструмент в работе',en:'tools in my workflow'}],['9',{ru:'недель курса по AI-видео в XR School',en:'weeks of the AI video course at XR School'}]];
+const IC={
+film:'<rect x="3" y="4" width="18" height="16" rx="3"/><path d="M8 4v16M16 4v16M3 9h5M3 15h5M16 9h5M16 15h5"/>',
+cam:'<path d="M4 8h3l2-3h6l2 3h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/><circle cx="12" cy="13" r="3.5"/>',
+grid:'<rect x="4" y="4" width="7" height="7" rx="2"/><rect x="13" y="4" width="7" height="7" rx="2"/><rect x="4" y="13" width="7" height="7" rx="2"/><rect x="13" y="13" width="7" height="7" rx="2"/>',
+box:'<path d="M12 3 4 7v10l8 4 8-4V7z"/><path d="M4 7l8 4 8-4M12 11v10"/>',
+clap:'<path d="M4 10h16v9a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1z"/><path d="m4 10-1-4 15-3 1 4M8 7l2 3M13 6l2 3"/>',
+user:'<circle cx="12" cy="8" r="4"/><path d="M4 20c1-4 4-6 8-6s7 2 8 6"/>',
+music:'<path d="M9 18V6l11-2v12"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="17.5" cy="16" r="2.5"/>'};
+const SVC=[
+['film',{ru:'Рекламный AI-ролик',en:'AI ad video'},{ru:'Ролик для продукта или бренда: идея, генерация, монтаж и звук. Форматы для Reels, Shorts и маркетплейсов.',en:'A video for a product or brand: idea, generation, editing and sound. Formats for Reels, Shorts and marketplaces.'}],
+['cam',{ru:'AI-фотосессия товара и lookbook',en:'AI product shoot and lookbook'},{ru:'Предметные, lifestyle и модные кадры без студии. Ваши товар, одежда или украшения остаются настоящими.',en:'Product, lifestyle and fashion shots without a studio. Your product, clothes or jewellery stay real.'}],
+['grid',{ru:'Карточки для маркетплейсов',en:'Marketplace product cards'},{ru:'Визуал и инфографика для карточек товаров на основе ваших реальных фотографий.',en:'Visuals and infographics for product cards, built on your real product photos.'}],
+['box',{ru:'Упаковка и визуализация',en:'Packaging and visualisation'},{ru:'Варианты упаковки продукта и показ её как готового товара.',en:'Packaging options for a product, shown as a finished item.'}],
+['clap',{ru:'Трейлер для питчинга сценария',en:'Script pitch trailer'},{ru:'Короткий ролик, который передаёт настроение и героев истории для показа продюсерам.',en:'A short video that conveys the mood and characters of a story, ready to show producers.'}],
+['user',{ru:'AI-аватар для эксперта или блогера',en:'AI avatar for an expert or blogger'},{ru:'Аватар с вашим лицом и голосом, который снимает ролики по вашим сценариям.',en:'An avatar with your face and voice that delivers videos from your scripts.'}],
+['music',{ru:'Музыкальный клип или сниппет',en:'Music video or snippet'},{ru:'Клип для трека: образ героя, сюжет и визуальный стиль.',en:'A music video for a track: the look of the hero, the story and the visual style.'}]];
+const PROC=[
+[{ru:'Бриф',en:'Brief'},{ru:'Обсуждаем задачу, площадку, аудиторию, сроки и референсы.',en:'We discuss the task, the platform, the audience, the deadline and references.'}],
+[{ru:'Концепт',en:'Concept'},{ru:'Придумываю идею, сюжет или раскадровку и стиль. Вы согласовываете.',en:'I develop the idea, the story or storyboard and the style. You approve it.'}],
+[{ru:'Генерация',en:'Generation'},{ru:'Создаю кадры, оживляю их и, если нужно, озвучиваю.',en:'I create the frames, animate them and, if needed, add the voice.'}],
+[{ru:'Монтаж и правки',en:'Editing and revisions'},{ru:'Собираю ролик, работаю со звуком и цветом, вношу правки.',en:'I assemble the video, work on sound and colour and make revisions.'}],
+[{ru:'Сдача',en:'Delivery'},{ru:'Передаю файлы в нужных форматах и размерах для ваших площадок.',en:'I hand over the files in the formats and sizes your platforms need.'}]];
+const LINKS=[
+['Telegram',{ru:'Личные сообщения',en:'Direct messages'},'@juliachu93','https://t.me/juliachu93'],
+['Telegram',{ru:'Канал',en:'Channel'},'@julia_chu_ai','https://t.me/julia_chu_ai'],
+['Instagram',{ru:'AI-работы',en:'AI work'},'@julia_chu_ai','https://www.instagram.com/julia_chu_ai/'],
+['Instagram',{ru:'Истории по мотивам',en:'Stories inspired by'},'@fairytales_dramiona','https://www.instagram.com/fairytales_dramiona/'],
+['Behance',{ru:'Кейсы',en:'Case studies'},'behance.net/juliachu936cc7','https://www.behance.net/juliachu936cc7']];
+
+let lang='ru',filter='all';
+try{const s=localStorage.getItem('yc-lang');if(s==='ru'||s==='en')lang=s}catch(e){}
+const T=o=>{o=O(o);return o[lang]||o.ru};
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const ARW='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg>';
+const PLAY='<svg viewBox="0 0 12 12" fill="currentColor"><path d="M2 1v10l9-5z"/></svg>';
+const ORDER={real:0,ads:1,photo:2,avatars:3,personal:4,illus:5};
+
+function card(p,big){
+  const hasV=p.media.some(m=>m.t==='v');
+  const ar=Math.min(Math.max(p.ar,.66),1.78);
+  const b=[`<span class="b ${p.badge}">${esc(T(BADGE[p.badge]))}</span>`];
+  return `<article class="card" tabindex="0" role="button" data-id="${p.id}" aria-label="${esc(T(p.title))}">
+  <div class="cover"${big?'':` style="aspect-ratio:${ar}"`}>
+    <img src="${p.cover}" alt="${esc(T(p.title))}" loading="lazy">
+    ${p.preview?`<video muted loop playsinline preload="none" data-src="${p.preview}"></video>`:''}
+    <span class="tag">${esc(T(p.tag))}</span>${hasV?`<span class="pl">${PLAY}</span>`:''}
+  </div>
+  <div class="cinfo"><div><h3>${esc(T(p.title))}</h3><p>${esc(T(p.sub))}</p></div><span class="circ">${ARW}</span></div>
+  <div class="bdg">${b.join('')}</div></article>`;
+}
+function renderStatic(){
+  document.documentElement.lang=lang;
+  document.querySelectorAll('[data-k]').forEach(e=>{const v=UI[e.dataset.k];if(v)e.innerHTML=v[lang]});
+  document.querySelectorAll('.lang button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.l===lang)));
+  $('#track').innerHTML=[...TOOLS,...TOOLS].map(t=>`<span>${t}</span>`).join('');
+  $('#stats').innerHTML=STATS.map(s=>`<div class="stat"><b>${s[0]}</b><span>${esc(s[1][lang])}</span></div>`).join('');
+  $('#chips').innerHTML=TOOLS.slice(0,12).map(t=>`<span>${t}</span>`).join('');
+  $('#svc').innerHTML=SVC.map(s=>`<div class="sv rv"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">${IC[s[0]]}</svg></div><h3>${esc(s[1][lang])}</h3><p>${esc(s[2][lang])}</p><div class="pr">${esc(UI.price[lang])}</div></div>`).join('');
+  $('#proc').innerHTML=PROC.map((s,i)=>`<div class="step rv"><i>${i+1}</i><h3>${esc(s[0][lang])}</h3><p>${esc(s[1][lang])}</p></div>`).join('');
+  $('#links').innerHTML=LINKS.map(l=>`<a class="lk" href="${l[3]}" target="_blank" rel="noopener"><span><small>${l[0]} · ${esc(l[1][lang])}</small><b>${esc(l[2])}</b></span><span class="circ">${ARW}</span></a>`).join('');
+  $('#legend').innerHTML=LEG.map(l=>`<span><span class="b ${l[0]}">${esc(T(BADGE[l[0]]))}</span>${esc(l[1][lang])}</span>`).join('');
+  $('#filters').innerHTML=CATS.map(c=>`<button type="button" class="chip" data-f="${c.k}" aria-pressed="${c.k===filter}">${esc(c[lang])}</button>`).join('');
+  $('#feat').innerHTML=D.filter(p=>p.featured).map(p=>card(p,true)).join('');
+  renderGrid();observe();
+}
+let gn=0;
+function renderGrid(){
+  const list=D.filter(p=>filter==='all'||p.cat===filter).sort((a,b)=>(ORDER[a.cat]-ORDER[b.cat]));
+  gn=window.innerWidth<=860?2:3;
+  const cols=Array.from({length:gn},()=>({h:0,html:''}));
+  list.forEach(p=>{
+    let c=cols[0];cols.forEach(x=>{if(x.h<c.h-0.001)c=x});
+    c.html+=card(p,false);c.h+=1/Math.min(Math.max(p.ar,.66),1.78)+.42;
+  });
+  $('#grid').innerHTML=cols.map(c=>`<div class="gcol">${c.html}</div>`).join('');
+}
+window.addEventListener('resize',()=>{const n=window.innerWidth<=860?2:3;if(n!==gn)renderGrid()});
+/* hover previews */
+function hov(e,on){
+  const c=e.target.closest&&e.target.closest('.card');if(!c||(e.pointerType&&e.pointerType!=='mouse'))return;
+  const cv=c.querySelector('.cover'),v=c.querySelector('video');if(!v)return;
+  if(on){if(!v.src)v.src=v.dataset.src;const pr=v.play();if(pr&&pr.catch)pr.catch(()=>{});cv.classList.add('on')}
+  else{v.pause();cv.classList.remove('on')}
+}
+document.addEventListener('pointerover',e=>{const c=e.target.closest&&e.target.closest('.card');if(c&&!c.contains(e.relatedTarget))hov(e,true)});
+document.addEventListener('pointerout',e=>{const c=e.target.closest&&e.target.closest('.card');if(c&&!c.contains(e.relatedTarget))hov(e,false)});
+/* reveal */
+let io=null;
+function observe(){
+  const els=document.querySelectorAll('.rv:not(.in)');
+  if(!('IntersectionObserver' in window)){els.forEach(e=>e.classList.add('in'));return}
+  if(!io)io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}}),{rootMargin:'0px 0px -8% 0px'});
+  els.forEach(e=>io.observe(e));
+}
+/* modal */
+let cur=null,ix=0,lastFocus=null;
+function openP(id){
+  cur=D.find(p=>p.id===id);if(!cur)return;ix=0;lastFocus=document.activeElement;
+  $('#ov').classList.add('open');document.body.classList.add('lock');
+  renderInfo();renderItem();$('#mx').focus();
+}
+function closeP(){
+  const v=$('#stage video');if(v)v.pause();
+  $('#stage').innerHTML='';$('#ov').classList.remove('open');document.body.classList.remove('lock');
+  if(lastFocus&&lastFocus.focus)lastFocus.focus();cur=null;
+}
+function renderInfo(){
+  const p=cur;let h=`<div><span class="b ${p.badge}">${esc(T(BADGE[p.badge]))}</span></div><h3 id="mt">${esc(T(p.title))}</h3><p class="sub">${esc(T(p.sub))}</p><p class="d">${esc(T(p.desc))}</p>`;
+  if(p.tools&&p.tools.length)h+=`<dl><dt>${esc(UI.m_tools[lang])}</dt><dd>${p.tools.map(esc).join(' · ')}</dd></dl>`;
+  const cat=CATS.find(c=>c.k===p.cat);if(cat)h+=`<dl><dt>${esc(UI.m_cat[lang])}</dt><dd>${esc(cat[lang])}</dd></dl>`;
+  if(p.links&&p.links.length)h+=`<div class="xl">${p.links.map(l=>`<a class="btn sec sm" href="${l.u}" target="_blank" rel="noopener">${esc(T(l.l))}${ARW.replace('<svg','<svg style="width:14px;height:14px"')}</a>`).join('')}</div>`;
+  h+=`<div class="xl" style="margin-top:auto"><a class="btn pri sm" href="https://t.me/juliachu93" target="_blank" rel="noopener" style="justify-content:center">${esc(UI.cta_tg[lang])}</a></div>`;
+  $('#info').innerHTML=h;
+  $('#thumbs').innerHTML=p.media.map((m,i)=>`<button class="th" type="button" data-i="${i}" aria-label="${i+1}" aria-current="${i===ix}"><img src="${m.t==='v'?m.poster:m.src}" alt="" loading="lazy">${m.t==='v'?`<span class="pl">${PLAY}</span>`:''}</button>`).join('');
+  const multi=p.media.length>1;$('#thumbs').hidden=!multi;$('#mp').hidden=!multi;$('#mn').hidden=!multi;
+}
+function renderItem(){
+  const m=cur.media[ix],st=$('#stage');const old=st.querySelector('video');if(old)old.pause();
+  if(m.t==='v'){
+    st.innerHTML=`<video controls playsinline preload="metadata" poster="${m.poster}" src="${m.src}"${m.w?` style="max-width:${m.w}px"`:''}></video>`;
+    const v=st.querySelector('video');const pr=v.play();if(pr&&pr.catch)pr.catch(()=>{});
+  }else st.innerHTML=`<img src="${m.src}" alt="${esc(T(cur.title))}">`;
+  $('#cap').textContent=m.label?T(m.label):(cur.media.length>1?`${ix+1} / ${cur.media.length}`:'');
+  document.querySelectorAll('#thumbs .th').forEach((b,i)=>{b.setAttribute('aria-current',String(i===ix));if(i===ix)b.scrollIntoView({block:'nearest',inline:'center'})});
+}
+function go(d){if(!cur)return;ix=(ix+d+cur.media.length)%cur.media.length;renderItem()}
+document.addEventListener('click',e=>{
+  const c=e.target.closest('.card');if(c){openP(c.dataset.id);return}
+  const ch=e.target.closest('.chip');if(ch){filter=ch.dataset.f;document.querySelectorAll('.chip').forEach(x=>x.setAttribute('aria-pressed',String(x===ch)));renderGrid();return}
+  const l=e.target.closest('.lang button');if(l){lang=l.dataset.l;try{localStorage.setItem('yc-lang',lang)}catch(x){}renderStatic();if(cur){renderInfo();renderItem()}return}
+  const th=e.target.closest('.th');if(th){ix=+th.dataset.i;renderItem();return}
+  if(e.target.id==='ov'||e.target.closest('#mx')){closeP();return}
+  if(e.target.closest('#mp')){go(-1);return}
+  if(e.target.closest('#mn')){go(1);return}
+});
+document.addEventListener('keydown',e=>{
+  if(e.key==='Enter'||e.key===' '){const c=e.target.closest&&e.target.closest('.card');if(c){e.preventDefault();openP(c.dataset.id);return}
+    if(e.target.id==='vc'){e.preventDefault();vcToggle()}}
+  if(!cur)return;
+  if(e.key==='Escape')closeP();else if(e.key==='ArrowLeft')go(-1);else if(e.key==='ArrowRight')go(1);
+});
+/* about video */
+function vcToggle(){
+  const w=$('#vc'),v=w.querySelector('video');
+  if(v.paused){v.play().catch(()=>{});w.classList.add('play');v.controls=false}else{v.pause();w.classList.remove('play')}
+}
+$('#vc').addEventListener('click',vcToggle);
+$('#vc video').addEventListener('ended',()=>$('#vc').classList.remove('play'));
+/* header + parallax */
+const bar=$('.bar'),blob=$('#blob');let tick=false;
+const rm=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+function onScroll(){
+  if(tick)return;tick=true;
+  requestAnimationFrame(()=>{tick=false;const y=window.scrollY;bar.classList.toggle('scrolled',y>8);if(!rm&&blob)blob.style.transform=`translate3d(0,${Math.min(y,900)*.09}px,0)`});
+}
+window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+renderStatic();
+</script>
+
+</body></html>
