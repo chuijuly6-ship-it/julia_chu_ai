@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://chuijuly6-ship-it.github.io/julia_chu_ai/sitemap.xml
